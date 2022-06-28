@@ -1,0 +1,47 @@
+[System]
+Name='FuzzyLobster'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='pHAir'
+Range=[0 14]
+NumMFs=3
+MF1='Rendah':'trimf',[0 0 7.75]
+MF2='Baik':'trimf',[6.5 7.75 9]
+MF3='Tinggi':'trimf',[7.75 14 14]
+
+[Input2]
+Name='Gas'
+Range=[0 1.6]
+NumMFs=3
+MF1='Baik':'trimf',[0 0 0.1]
+MF2='Sedang':'trimf',[0 0.3 0.6]
+MF3='Buruk':'trimf',[0.1 1.6 1.6]
+
+[Output1]
+Name='KualitasAir'
+Range=[0 1]
+NumMFs=3
+MF1='baik':'constant',[0]
+MF2='tercemar':'constant',[0.5]
+MF3='buruk':'constant',[1]
+
+[Rules]
+1 1, 2 (1) : 1
+1 2, 2 (1) : 1
+1 3, 3 (1) : 1
+2 1, 1 (1) : 1
+2 2, 2 (1) : 1
+2 3, 3 (1) : 1
+3 1, 2 (1) : 1
+3 2, 2 (1) : 1
+3 3, 3 (1) : 1
